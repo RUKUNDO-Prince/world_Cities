@@ -1,0 +1,205 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@1,300&display=swap');
+
+
+:root{
+    --first-color: #2e2e41;
+    --second-color: #5b85ff;
+    --third-color: #434354;
+    --text-color: #fff;
+
+    --box-shadow: 0 5px 25px rgb(2, 2, 2, 0.1);
+    --text-shadow: 0 5px 25px rgb(2, 2, 2, 0.1);
+}
+
+/* MAIN CSS */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: var(--first-color);
+}
+section{
+    position: relative;
+    margin: 0 80px;
+    transition: 0.5s ease;
+}
+.main-container{
+    position: relative;
+}
+
+
+/* TAB NAVIGATION BAR */
+
+
+.tab-nav-bar{
+    position: relative;
+    margin: 65px 10px 40px 10px;
+}
+.tab-navigation{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+.tab-menu{
+    color: var(--text-color);
+    list-style: none;
+    background: var(--third-color);
+    max-width: 800px;
+    padding: 10px;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--third-color);
+    border-radius: 50px;
+    box-shadow: var(--box-shadow);
+    overflow-x: auto;
+    user-select: none;
+    scroll-behavior: smooth;
+}
+.tab-menu.dragging{
+    scroll-behavior: unset;
+    cursor: grab;
+}
+.tab-menu::-webkit-scrollbar{
+    display: none;
+}
+.tab-btn{
+    color: var(--text-color);
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 2px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s ease;
+}
+.tab-menu.dragging.tab-btn{
+    pointer-events: none;
+}
+.tab-btn:hover{
+    background: var(--first-color);
+}
+.tab-btn.active{
+    background-color: var(--second-color);
+}
+.left-btn, .right-btn{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 1.8em;
+    padding: 10px;
+    cursor: pointer;
+}
+.left-btn{
+    left: 0;
+    background: linear-gradient(to left, transparent, var(--first-color) 80%);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: none;
+}
+.right-btn{
+    right: 0;
+    background: linear-gradient(to right, transparent, var(--first-color) 80%);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+
+/* TAB CONTENT */
+
+.tab-content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.tab{
+    position: absolute;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: auto;
+    max-width: 1100px;
+    padding: 15px 50px;
+    transform: translateX(25px);
+    content-visibility: hidden;
+    opacity: 0;
+}
+.tab.active{
+    transform: translateX(0);
+    content-visibility: visible;
+    opacity: 1;
+    transition: 1s ease;
+}
+.tab .row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 50px 0;
+    gap: 30px;
+}
+.tab .img-card{
+    position: relative;
+    width: 450px;
+    max-width: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow);
+}
+.tab .img-card img{
+    width: 100%;
+}
+.right-column{
+    max-width: 800px;
+}
+.info .city, .info .description p{
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.info .city{
+    font-size: 2em;
+}
+.country{
+    color: var(--third-color);
+    font-size: 5em;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: var(--text-shadow);
+}
+
+
+/* MEDIA QUERRIES */
+
+@media screen and ( max-width: 1050px ){
+    section{
+        margin: 0 0px;
+    }
+    .tab-nav-bar{
+        margin: 65px 20px 40px 25px;
+    }
+    .tab{
+        padding: 15px 25px;
+    }
+    .tab .row{
+        flex-direction: column;
+    }
+    .tab .img-card{
+        width: auto;
+        max-width: 600px;
+    }
+    .country{
+        font-size: 10vw;
+        padding-bottom: 50px;
+    }
+}
